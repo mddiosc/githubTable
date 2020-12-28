@@ -21,7 +21,7 @@ Esta aplicación obtiene un listado de repositorios en GitHub a partir de la inf
 - [Componentes](/src/components/README.md)
 - [Store](/src/store/README.md)
 - [Styles](/src/styles/README.md)
-- [Tests](/src/tests/README.md)
+- [Tests](/tests/README.md)
 
 ## Project setup
 
