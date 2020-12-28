@@ -2,6 +2,8 @@
 
 Esta aplicación obtiene un listado de repositorios en GitHub a partir de la informacion introducida por el usuario, utilizando para ello el API REST proporcionado por GitHub.
 
+**[DEMO](https://githubapi-azertium.netlify.app/)**
+
 ## Tecnologías utilizadas:
 
 - **vuejs** version 2
