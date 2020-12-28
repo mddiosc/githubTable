@@ -43,14 +43,14 @@
             </v-col>
           </v-row>
 
-          <v-row class="justify-space-around d-flex align-center">
-            <v-col cols="6" md="1">
+          <v-row>
+            <v-col class="justify-center d-flex align-center" cols="6">
               <v-btn color="secondary" @click="clean()">
                 Clear
               </v-btn>
             </v-col>
 
-            <v-col cols="6" md="1">
+            <v-col class="justify-center d-flex align-center" cols="6">
               <v-btn color="primary" @click="search">
                 Search
               </v-btn>
