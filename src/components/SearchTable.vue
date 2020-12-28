@@ -98,15 +98,18 @@ import OwnerDetails from "../components/tableDetails/RepoOwner";
 export default {
   data() {
     return {
+      // Inicializacion de filtros
       filters: {
         search: null,
         order: "desc",
         sort: "stars",
       },
+      // Items del selector de ordenación en filtros
       orderItems: [
         { text: "A-Z", value: "asc" },
         { text: "Z-A", value: "desc" },
       ],
+      // Listado de elementos sobre los que se podrá ordenar la tabla.
       sortItems: [
         { text: "Stars", value: "stars" },
         { text: "Created", value: "created" },
@@ -114,8 +117,11 @@ export default {
         { text: "Pushed", value: "pushed" },
         { text: "Full Name", value: "full_name" },
       ],
+      // Inicializacion de las opciones de paginación de la tabla.
       options: {},
+      // Inicializacion del array que contiene los datos expandidos en la tabla.
       expanded: [],
+      // Encabezados de la tabla.
       headers: [
         {
           text: "Repository Name",
@@ -130,11 +136,11 @@ export default {
           value: "html_url",
         },
       ],
-
+      //Propiedades del footer de la tabla.
       footerProps: {
         "items-per-page-options": [5, 10, 20],
       },
-
+      // Reglas de validación de los filtros.
       valid: true,
       rules: {
         required: [
@@ -146,13 +152,19 @@ export default {
   },
 
   components: {
+    // Componente que utiliza para mostrar la informacion detallada del repositorio
     OwnerDetails,
   },
 
   computed: {
+    /* Obtiene a partir de los getters de vuex el total de resultados obtenidos para 
+    el paginado de la tabla, los repositorios obtenidos, y mostrar o no el loading 
+    de la tabla */
     ...mapGetters("github", ["loading", "totalRepositories", "repositories"]),
   },
   watch: {
+    /* Vigila los cambios realizados en las opciones de paginación de la tabla, 
+    para actualizar los datos de la misma */
     options: {
       handler() {
         this.getSearchRepos({ options: this.options, filters: this.filters });
@@ -162,15 +174,21 @@ export default {
   },
 
   methods: {
+    /* Mapeo de las acciones de vuex para lanzar la busqueda de repositorios y el reseteo
+    de los mismos */
     ...mapActions("github", ["getSearchRepos", "cleanRepos"]),
 
     search() {
+      /* Método que lanza el botón buscar, y que ejecuta el action getSearchRepos en vuex
+      si la validacion del formulario es correcta */
       if (this.$refs.form.validate()) {
         this.getSearchRepos({ options: this.options, filters: this.filters });
       }
     },
 
     clean() {
+      /* Limpieza del formulario de búsqueda y validaciones. Llamada al action que
+      ejecuta la mutación de reseteo del state. */
       this.$refs.form.resetValidation();
       this.filters = {
         search: null,

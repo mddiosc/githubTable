@@ -13,6 +13,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// Inclusión de los estilos (SASS) definidos en el fichero @/styles/variables
 .theme--light.v-app-bar.v-toolbar.v-sheet {
   @include headerProps;
 }
